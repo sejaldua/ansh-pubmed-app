@@ -1,0 +1,44 @@
+import streamlit as st
+from pymed import PubMed
+from pprint import pprint
+from Bio import Entrez
+Entrez.email = "sejaldua@gmail.com"
+handle = Entrez.einfo() # or esearch, efetch, ...
+record = Entrez.read(handle)
+handle.close()
+
+
+def querySearch(keywords):
+  refined_search = keywords.lower()
+  article_info = []
+  pubmed = PubMed(tool="MyTool", email="sejaldua@gmail.com")
+  results = pubmed.query(refined_search , max_results=5)
+  result_list = list(results)
+  if len(result_list) == 0:
+    print("Try Again")
+  else:
+   for i, article in enumerate(result_list):
+    
+      article_info.insert(i, article.toDict())
+      dicts = article_info[i]
+      doi = dicts.get("doi")
+      id = dicts.get("pubmed_id")
+      if "\n" in doi:
+          doi_index = doi.index("\n")
+          dicts.update({"doi" : article.doi[0:doi_index]})
+      if "\n" in id:
+          id_index = id.index("\n")
+          dicts.update({"pubmed_id" : article.pubmed_id[0:id_index]})
+      dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
+      print(
+        f'Title: {dicts.get("title")} | Publication Date: {dicts.get("publication_date")} | | PubMed Id: {dicts.get("pubmed_id")}\nJournal: {dicts.get("journal")}\nAuthors: {dicts.get("authors")}\nKeywords: "{dicts.get("keywords")}"\nAbstract: {dicts.get("abstract")}\nLink: {dicts.get("link")}\n'
+      )
+
+
+diseases = ['Fabry Disease', 'Cystic Fibrosis', 'Hemophilia', 'Brugada Syndrome', 'Scleroderma', 'Primary biliary cholangitis', 'Alzheimer Disease', 'ALS ', 'Muscular dystrophy', 'Spinal Muscular Atrophy']
+treatments = ['Nanoparticle drug delivery systems', 'Nanovaccines', 'nanoparticle-based treatments', 'Nanoparticle drugs', 'Nanoparticles for diagnosis', 'synthetic nanoparticles components']
+st.write(querySearch(diseases[0]))
+#for i in diseases: 
+#  querySearch(i)
+#for j in treatments:
+#  querySearch(j)
