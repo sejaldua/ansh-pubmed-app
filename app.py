@@ -1,4 +1,5 @@
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 import streamlit as st
 from pymed import PubMed
 from pprint import pprint
