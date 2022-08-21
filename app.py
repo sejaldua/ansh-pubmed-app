@@ -1,5 +1,4 @@
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+
 import streamlit as st
 from pymed import PubMed
 from pprint import pprint
@@ -18,7 +17,8 @@ def querySearch(keywords):
   result_list = list(results)
   output_str = ""
   if len(result_list) == 0:
-    return "Try Again"
+    zero_results = "Try Again"
+    return zero_results
   else:
    for i, article in enumerate(result_list):
     
