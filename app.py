@@ -28,12 +28,16 @@ def querySearch(keywords):
       dicts = article_info[i]
       doi = dicts.get("doi")
       id = dicts.get("pubmed_id")
-      if "\n" in doi:
-          doi_index = doi.index("\n")
-          dicts.update({"doi" : article.doi[0:doi_index]})
-      if "\n" in id:
-          id_index = id.index("\n")
-          dicts.update({"pubmed_id" : article.pubmed_id[0:id_index]})
+      if doi != None:
+        if "\n" in doi:
+            doi_index = doi.index("\n")
+            dicts.update({"doi" : article.doi[0:doi_index]})
+      if id != None:
+        if "\n" in id:
+            id_index = id.index("\n")
+            dicts.update({"pubmed_id" : article.pubmed_id[0:id_index]})
+      elif id == None:
+          dicts.update({"pubmed_id" : "None"})
       dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
       output_str += f'Title: {dicts.get("title")}\n'
       output_str += f'Publication Date: {dicts.get("publication_date")}\n'
@@ -53,9 +57,7 @@ search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 
 run_query = st.sidebar.button('Learn More!')
 st.text(querySearch(search_term))
-annotated_text(
-  (choices, "#8f")
-  )
+
 #for i in diseases: 
 #  querySearch(i)
 #for j in treatments:
