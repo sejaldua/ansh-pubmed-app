@@ -2,7 +2,7 @@ import streamlit as st
 from pymed import PubMed
 from pprint import pprint
 from Bio import Entrez
-Entrez.email = "sejaldua@gmail.com"
+Entrez.email = "anshptl21@gmail.com"
 handle = Entrez.einfo() # or esearch, efetch, ...
 record = Entrez.read(handle)
 handle.close()
@@ -11,7 +11,7 @@ handle.close()
 def querySearch(keywords):
   refined_search = keywords.lower()
   article_info = []
-  pubmed = PubMed(tool="MyTool", email="sejaldua@gmail.com")
+  pubmed = PubMed(tool="MyTool", email="anshptl21@gmail.com")
   results = pubmed.query(refined_search , max_results=5)
   result_list = list(results)
   output_str = ""
