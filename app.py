@@ -54,7 +54,7 @@ search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 run_query = st.sidebar.button('Learn More!')
 st.text(querySearch(search_term))
 annotated_text(
-  choices, "#8f"
+  (choices, "#8f")
   )
 #for i in diseases: 
 #  querySearch(i)
