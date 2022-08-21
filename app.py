@@ -11,6 +11,11 @@ record = Entrez.read(handle)
 handle.close()
 
 
+with st.sidebar:
+    my_component(greeting="hello")
+Copy
+
+
 def querySearch(keywords):
   refined_search = keywords.lower()
   article_info = []
