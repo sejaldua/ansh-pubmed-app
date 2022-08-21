@@ -1,6 +1,3 @@
-requests.get(url, headers=Hostreferer,verify=False)
-
-
 import streamlit as st
 from pymed import PubMed
 from pprint import pprint
