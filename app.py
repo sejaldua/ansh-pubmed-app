@@ -1,6 +1,7 @@
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import streamlit as st
+from annotated_text import annotated_text
 from pymed import PubMed
 from pprint import pprint
 from Bio import Entrez
@@ -52,6 +53,9 @@ search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 
 run_query = st.sidebar.button('Learn More!')
 st.text(querySearch(search_term))
+annotated_text(
+  choices, "#8f"
+  )
 #for i in diseases: 
 #  querySearch(i)
 #for j in treatments:
