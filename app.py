@@ -58,11 +58,10 @@ else:
 search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 run_query = st.sidebar.button('Learn More!')
 
-r = requests.get('placeholder-external-api') 
 if run_query == True:
-  querySearch(search_term)
-  if r.status_code == 429:    
-    raise TooManyRequests()
+  try:
+    querySearch(search_term)
+  except Exception as e:
     requests.get(link, headers = {'User-agent': 'your bot 0.1'})
   else:
     st.write(querySearch(search_term))
