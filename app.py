@@ -11,10 +11,6 @@ record = Entrez.read(handle)
 handle.close()
 
 
-with st.sidebar:
-    my_component(greeting="hello")
-Copy
-
 
 def querySearch(keywords):
   refined_search = keywords.lower()
@@ -25,7 +21,7 @@ def querySearch(keywords):
   output_str = ""
   if len(result_list) == 0:
     zero_results = "Try Again"
-    return zero_results
+    st.write(zero_results)
   else:
    for i, article in enumerate(result_list):
     
@@ -54,13 +50,14 @@ treatments = ['Nanoparticle drug delivery systems', 'Nanovaccines', 'nanoparticl
 
 mode = st.sidebar.selectbox('Select a research focus', ['Rare Diseases', 'Nanotechnology Treatments'])
 if mode == 'Rare Diseases':
-  choices = diseases
+    choices = diseases
 else:
   choices = treatments
 
 search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 
 run_query = st.sidebar.button('Learn More!')
+st.write(run_query)
 st.text(querySearch(search_term))
 
 #for i in diseases: 
