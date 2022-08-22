@@ -68,9 +68,8 @@ if run_query == True:
     results = querySearch(search_term)
     st.write(results)
     index = results.find(search_term)
-    st.write(index)
     annotated_text(
-      (results[i], "search-term", "#8ef"),
+      (results[index], "search-term", "#8ef"),
     )
 
 #for i in diseases: 
