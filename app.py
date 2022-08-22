@@ -68,7 +68,7 @@ if run_query == True:
     st.write(querySearch(search_term))
     with st.echo():
       annotated_text(
-        (choices, "#8ef")
+        (search_term, "#8ef")
       )
 
 
