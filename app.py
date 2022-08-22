@@ -55,13 +55,18 @@ else:
   choices = treatments
 
 search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
-
 run_query = st.sidebar.button('Learn More!')
+
+class TooManyRequests(Exception):
+  """Too many requests"""
+  @task(rate_limit='10/s', autoretry_for=(ConnectTimeout, TooManyRequests,), retry_backoff=True)
+def api(*args, **kwargs): 
+  r = requests.get('placeholder-external-api')  
 if run_query == True:
   try:
     querySearch(search_term)
-  except TooManyRequestsException:
-    st.write("0 Results - Try Another Term")
+    if r.status_code == 429:    
+      raise TooManyRequests()
   else:
     st.write(querySearch(search_term))
 
