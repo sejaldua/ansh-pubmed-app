@@ -1,6 +1,7 @@
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import streamlit as st
+import requests
 from annotated_text import annotated_text
 from pymed import PubMed
 from pprint import pprint
