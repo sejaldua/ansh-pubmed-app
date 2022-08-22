@@ -69,6 +69,9 @@ if run_query == True:
     st.write(results)
     index = results.find(search_term)
     st.write(index)
+    annotated_text(
+      (results[i], "search-term", "#8ef"),
+    )
 
 #for i in diseases: 
 #  querySearch(i)
