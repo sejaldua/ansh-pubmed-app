@@ -57,8 +57,13 @@ else:
 search_term = st.sidebar.selectbox('Select a PubMed query term', choices)
 
 run_query = st.sidebar.button('Learn More!')
-st.write(run_query)
-st.text(querySearch(search_term))
+if run_query == True:
+  try:
+    querySearch(search_term)
+  except TooManyRequestsException:
+    st.write("0 Results - Try Another Term")
+  else:
+    st.write(querySearch(search_term)
 
 #for i in diseases: 
 #  querySearch(i)
