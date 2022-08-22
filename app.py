@@ -65,12 +65,10 @@ if run_query == True:
   except Exception as e:
     requests.get(link, headers = {'User-agent': 'your bot 0.1'})
   else:
-    st.write(querySearch(search_term))
-    with st.echo():
-      annotated_text(
-        (search_term, "#8ef")
-      )
-
+    results = querySearch(search_term)
+    st.write(results)
+    index = results.find(search_term)
+    st.write(index)
 
 #for i in diseases: 
 #  querySearch(i)
