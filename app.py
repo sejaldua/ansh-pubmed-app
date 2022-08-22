@@ -63,7 +63,7 @@ if run_query == True:
   except TooManyRequestsException:
     st.write("0 Results - Try Another Term")
   else:
-    st.write(querySearch(search_term)
+    st.write(querySearch(search_term))
 
 #for i in diseases: 
 #  querySearch(i)
