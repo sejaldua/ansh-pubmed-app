@@ -60,10 +60,9 @@ run_query = st.sidebar.button('Learn More!')
 class TooManyRequests(Exception):"""Too many requests"""@task(   rate_limit='10/s',   autoretry_for=(ConnectTimeout, TooManyRequests,),   retry_backoff=True)
 def api(*args, **kwargs):  r = requests.get('placeholder-external-api') 
 if run_query == True:
-  try:
-    querySearch(search_term)
-    if r.status_code == 429:    
-      raise TooManyRequests()
+  querySearch(search_term)
+  if r.status_code == 429:    
+    raise TooManyRequests()
   else:
     st.write(querySearch(search_term))
 
