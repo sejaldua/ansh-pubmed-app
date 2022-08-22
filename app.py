@@ -2,6 +2,8 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import streamlit as st
 import requests
+from annotated_text import annotated_text, annotation
+annotation = util.annotation
 from annotated_text import annotated_text
 from pymed import PubMed
 from pprint import pprint
@@ -65,6 +67,11 @@ if run_query == True:
     requests.get(link, headers = {'User-agent': 'your bot 0.1'})
   else:
     st.write(querySearch(search_term))
+    with st.echo():
+      annotated_text(
+        (choices, "#8ef")
+      )
+
 
 #for i in diseases: 
 #  querySearch(i)
