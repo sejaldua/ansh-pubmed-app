@@ -43,14 +43,14 @@ def querySearch(keywords):
       elif id == None:
           dicts.update({"pubmed_id" : "None"})
       dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
-      st.header(dicts.get("title"))
+      st.header("dicts.get("title")")
       st.write("Publication Date: {dicts.get("publication_date")}\n
                 PubMed Id: {dicts.get("pubmed_id")}\n
                 Journal: {dicts.get("journal")}\n
                 Authors: {dicts.get("authors")}\n
                 Keywords: {dicts.get("keywords")}\n
                 Abstract: {dicts.get("abstract")}\n
-                Link: {dicts.get("link")} ")
+                Link: {dicts.get("link")}")
                 
                
   return st.write("Search Results")
