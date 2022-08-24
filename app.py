@@ -44,15 +44,16 @@ def querySearch(keywords):
           dicts.update({"pubmed_id" : "None"})
       dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
       st.header(dicts.get("title"))
-      st.write('''
-                Publication Date: {dicts.get("publication_date")}
-                PubMed Id: {dicts.get("pubmed_id")}
+      st.write("
+                Publication Date: {dicts.get("publication_date")}\n
+                PubMed Id:' {dicts.get("pubmed_id")}"
                 Journal: {dicts.get("journal")}
                 Authors: {dicts.get("authors")}
                 Keywords: {dicts.get("keywords")}
                 Abstract: {dicts.get("abstract")}
                 Link: {dicts.get("link")}
-      ''')
+      ")
+               
   return st.write("Search Results")
 
 diseases = ['Fabry Disease', 'Cystic Fibrosis', 'Hemophilia', 'Brugada Syndrome', 'Scleroderma', 'Primary biliary cholangitis', 'Alzheimer Disease', 'ALS ', 'Muscular dystrophy', 'Spinal Muscular Atrophy']
