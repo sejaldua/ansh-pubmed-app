@@ -43,8 +43,17 @@ def querySearch(keywords):
       elif id == None:
           dicts.update({"pubmed_id" : "None"})
       dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
-      st.write(f'Title: {dicts.get("title")}\nPublication Date: {dicts.get("publication_date")}\nPubMed Id: {dicts.get("pubmed_id")}\nJournal: {dicts.get("journal")}\nAuthors: {dicts.get("authors")}\nKeywords: "{dicts.get("keywords")}"\nAbstract: {dicts.get("abstract")}\nLink: {dicts.get("link")}\n')
-  return None
+      st.header(dicts.get("title"))
+      st.write('''
+                Publication Date: {dicts.get("publication_date")}
+                PubMed Id: {dicts.get("pubmed_id")}
+                Journal: {dicts.get("journal")}
+                Authors: {dicts.get("authors")}
+                Keywords: {dicts.get("keywords")}
+                Abstract: {dicts.get("abstract")}
+                Link: {dicts.get("link")}
+      ''')
+  return st.write("Search Results")
 
 diseases = ['Fabry Disease', 'Cystic Fibrosis', 'Hemophilia', 'Brugada Syndrome', 'Scleroderma', 'Primary biliary cholangitis', 'Alzheimer Disease', 'ALS ', 'Muscular dystrophy', 'Spinal Muscular Atrophy']
 treatments = ['Nanoparticle drug delivery systems', 'Nanovaccines', 'nanoparticle-based treatments', 'Nanoparticle drugs', 'Nanoparticles for diagnosis', 'synthetic nanoparticles components']
