@@ -24,6 +24,7 @@ def querySearch(keywords):
   if len(result_list) == 0:
     zero_results = "Try Again"
     st.write(zero_results)
+    return None
   else:
    for i, article in enumerate(result_list):
     
@@ -42,7 +43,7 @@ def querySearch(keywords):
       elif id == None:
           dicts.update({"pubmed_id" : "None"})
       dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
-      output_str += f'Title: {dicts.get("title")}\n'
+      st.write(f'Title: {dicts.get("title")}\n')
       output_str += f'Publication Date: {dicts.get("publication_date")}\n'
       output_str += f'PubMed Id: {dicts.get("pubmed_id")}\nJournal: {dicts.get("journal")}\nAuthors: {dicts.get("authors")}\nKeywords: "{dicts.get("keywords")}"\nAbstract: {dicts.get("abstract")}\nLink: {dicts.get("link")}\n'
   return output_str
