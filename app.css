@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+:root{
+  font-family: "Montserrat", sans-serif;
+}
+
+:hover {
+  transition: .4s ease-in-out;
+}
+
+#back_to_top_btn{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 2%;
+  font-size: 100%;
+}
+
+#back_to_top_btn:hover{
+  text-decoration: underline;
+}
+
+div.css-1fv8s86.e16nr0p33 a{
+  color:black
+}
+
+div.stApp.css-ffhzg2.eczokvf1{
+  background-color: #669999 !important;
+  font-family: inherit;
+}
+
+header.css-1avcm0n.e8zbici2{
+  background-color: #669999 !important;
+  font-family: inherit;
+
+}
+
+.stSlider{
+  color:white
+}
+
+span.css-10trblm.e16nr0p30 a{
+  color: black !important;
+  font-family: inherit;
+
+}
+button.css-wq85zr.edgvbvh9{
+  background-color: white;
+  color:black;
+  font-size: 85%;
+  width: fit-content;
+}
+button.css-wq85zr.edgvbvh9:hover{
+  box-shadow: 5px 5px black;
+  border: none;
+  transition: .4s ease-in-out;
+}
+
+
+div.StyledThumbValue.css-10y5sf6.e88czh82{
+  color: white;
+}
+
+div.css-demzbm.e88czh83{
+  background-color: white !important ;
+}
+
+#number_of_results{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(199, 235, 255);
+  padding: 3%;
+  font-family: inherit;
+  width: 100%;
+  border-radius: 3%;
+  color: gray;
+}
+
+#search-bar-navigation, #submit-search-bar-navigation{
+  border: none;
+  width: 90%;
+  height:20%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding: 4%;
+  font-family: inherit;
+  background-color: white;
+}
+
+#submit-search-bar-navigation{
+  width: fit-content;
+  padding: 3%;
+  background-color: white;
+}
+#submit-search-bar-navigation:hover{
+box-shadow: 4px 4px red;
+transition: .4s ease-in;
+}
