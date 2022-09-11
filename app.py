@@ -41,6 +41,7 @@ def querySearch(keywords):
       pubmed = PubMed(tool="MyTool", email="sejaldua@gmail.com")
       results = pubmed.query(refined_search , max_results=num_of_results)
       result_list = list(results)
+      pprint(result_list[0].toDict())
     # if results are none - return try again
       if len(result_list) == 0:
         zero_results = st.write("Try Again")
@@ -67,6 +68,7 @@ def querySearch(keywords):
             authors[i] = f'{auth_lastname} {auth_firstname} | {auth_affiliation}'
     #formatting id/doi
           id = dicts.get("pubmed_id")
+              
           if doi != None:
             if "\n" in doi:
                 doi_index = doi.index("\n")
@@ -77,6 +79,16 @@ def querySearch(keywords):
                 dicts.update({"pubmed_id" : article.pubmed_id[0:id_index]})
           elif id == None:
               dicts.update({"pubmed_id" : "None"})
+              
+          # SEJAL to ANSH: uncomment the code below find similar articles
+          # print(id, dicts.get('title'))
+          # handle = Entrez.elink(dbfrom="pubmed", id=id, linkname="pubmed_pubmed")
+          # record = Entrez.read(handle)
+          # handle.close()
+          # print(record[0]["LinkSetDb"][0]["LinkName"])
+          # # pubmed_pubmed
+          # linked = [link["Id"] for link in record[0]["LinkSetDb"][0]["Link"]][:5]
+          # print(linked)
 
           dicts["link"] = "https://pubmed.ncbi.nlm.nih.gov/" + dicts.get("pubmed_id")
     #if filter is applied - do this: will only occur is options aren't none
@@ -85,6 +97,7 @@ def querySearch(keywords):
               key_words = dicts.get("keywords")
               title = dicts.get("title")
               abstract = dicts.get("abstract")
+                  
               for i in range(len(options)):
                   if key_words != None:
                       if options[i] in key_words:
@@ -149,13 +162,13 @@ if apply_filter or st.session_state["apply_filter_state"]:
         st.sidebar.write("Please choose a keyword first")
 
 
-try:
-    search_term = input
-    results = str(querySearch(search_term))
-except Exception as e:
-    st.info("Too Many Requests For Server. Please Wait")
-else:
-    st.write(results)
+# try:
+search_term = input
+results = str(querySearch(search_term))
+# except Exception as e:
+# st.info("Too Many Requests For Server. Please Wait")
+# else:
+#     st.write(results)
 
 #back to top link
 st.markdown("<a id = 'back_to_top_btn' href='#1'>Back To Top</a>", unsafe_allow_html = True)
